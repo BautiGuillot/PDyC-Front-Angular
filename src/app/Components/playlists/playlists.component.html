@@ -1,0 +1,23 @@
+<!-- importar sidebar -->
+<app-sidebar></app-sidebar>
+
+<h1>Playlists:</h1>
+
+<div class="main-content">
+    <table class="table">
+      <thead class>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad de canciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(playlist of playlists; track playlist){
+        <tr>
+          <td>{{ playlist.name }}</td>
+          <td>{{ playlist.songCount }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+</div>
