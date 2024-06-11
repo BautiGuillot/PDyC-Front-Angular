@@ -18,10 +18,27 @@ export class LoginService {
       const authorizationHeader = res.headers.get('Authorization');
       if(authorizationHeader !== null){
         localStorage.setItem('token', authorizationHeader);
+        localStorage.setItem('userEmail', credentials.email);
         console.log("Token guardado" + localStorage.getItem('token'));
       };
     
       return res;
     }))
-  }
+  };
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userEmail');
+  };
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  };
+
+  getUserEmail(): string | null {
+    return localStorage.getItem('userEmail');
+  };
+
 }
+
+
