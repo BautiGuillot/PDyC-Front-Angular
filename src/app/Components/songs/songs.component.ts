@@ -1,13 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { SongsService } from '../../services/songs.service';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { FormsModule } from '@angular/forms'; // Importar FormsModule
-
 
 @Component({
   selector: 'app-songs',
   standalone: true,
-  imports: [SidebarComponent,FormsModule],
+  imports: [SidebarComponent],
   templateUrl: './songs.component.html',
   styleUrl: './songs.component.css'
 })
