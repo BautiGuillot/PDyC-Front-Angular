@@ -1,0 +1,16 @@
+<!-- Importar sidebar -->
+<app-sidebar></app-sidebar>
+
+<h1>Playlists:</h1>
+
+<div class="main-content">
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="!errorMessage">
+    <p>Mis Playlists:</p>
+    <ul class="playlist-list">
+      <li *ngFor="let playlist of playlists" class="playlist-item">
+        {{ playlist.name }}
+      </li>
+    </ul>
+  </div>
+</div>

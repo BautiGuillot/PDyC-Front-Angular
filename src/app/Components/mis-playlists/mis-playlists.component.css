@@ -1,0 +1,40 @@
+/* Estilo para el contenido principal */
+.main-content {
+  margin-left: 200px; /* Ajustar según el ancho del sidebar */
+  padding: 20px;
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Estilo para el mensaje de error */
+.error {
+  color: #ff0000;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Estilo para la lista de playlists */
+.playlist-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.playlist-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border-radius: 4px;
+}
+
+.playlist-item:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+/* Estilo para el título "Mis Playlists" */
+.main-content > p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

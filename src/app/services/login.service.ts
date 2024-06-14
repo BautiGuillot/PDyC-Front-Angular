@@ -32,7 +32,7 @@ export class LoginService {
   };
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+    return !!localStorage.getItem('token'); // El operador !! es una forma de convertir cualquier valor en JavaScript a su equivalente booleano. Si el token existe devolverá true, de lo contrario, devolverá false.
   };
 
   getUserEmail(): string | null {

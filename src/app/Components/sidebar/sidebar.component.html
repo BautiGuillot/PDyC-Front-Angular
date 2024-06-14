@@ -3,7 +3,12 @@
     <li>
       <a href="/">Songs</a>
       <a href="/playlists">Playlists</a>
-      <a href="/personalPlaylists">Mis Playlists</a>
+      <ng-container *ngIf="userEmail; else showLoginLink">
+        <a href="/misPlaylists">Mis Playlists</a>
+      </ng-container>
+      <ng-template #showLoginLink>
+        <a href="/login">Mis Playlists</a>
+      </ng-template>
       <ng-container *ngIf="userEmail; else loginLink">
         <span>{{ userEmail }}</span>
         <button (click)="logout()">Logout</button>
@@ -14,4 +19,3 @@
     </li>
   </ul>
 </nav>
-  
