@@ -25,12 +25,12 @@ export default class MisPlaylistsComponent implements OnInit{
   }
 
   loadPlaylists(): void {
-    this.playlistService.getMyPlaylists().subscribe({
-      next: data => {
-        this.playlists = data;
+    this.playlistService.getMyPlaylists().subscribe({ 
+      next: data => {  // si la petición es exitosa, guardar las playlists en la variable playlists 
+        this.playlists = data; // data es el array de playlists que devuelve el servicio
       },
-      error: err => {
-        if (err.status === 403) {
+      error: err => { 
+        if (err.status === 403) { // si hay un 403 (no autorizado) redirigir al login
           this.errorMessage = 'No tienes permisos para ver estas playlists. Por favor, inicia sesión.';
           this.router.navigate(['/login']);
         } else {

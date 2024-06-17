@@ -1,0 +1,11 @@
+<!-- Importar sidebar -->
+<app-sidebar></app-sidebar>
+
+<!-- Formulario para crear playlist -->
+<form #playlistForm="ngForm" (ngSubmit)="onSubmit(playlistForm)">
+  <div class="form-group">
+    <label for="name">Nombre de la Playlist:</label>
+    <input type="text" id="name" class="form-control" name="playlistName" [(ngModel)]="playlistName" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Crear Playlist</button>
+</form>

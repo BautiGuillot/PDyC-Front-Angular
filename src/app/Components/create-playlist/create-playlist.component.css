@@ -1,0 +1,43 @@
+/* Estilo para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  /* Estilo para los elementos del formulario */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* Estilo para la etiqueta del formulario */
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* Estilo para el campo de entrada del formulario */
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Estilo para el botón de envío del formulario */
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Estilo para el botón de envío del formulario al pasar el mouse */
+  button:hover {
+    background-color: #0056b3;
+  }

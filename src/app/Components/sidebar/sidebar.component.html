@@ -5,6 +5,7 @@
       <a href="/playlists">Playlists</a>
       <ng-container *ngIf="userEmail; else showLoginLink">
         <a href="/misPlaylists">Mis Playlists</a>
+        <a href="/createPlaylist">Crear Playlist</a>
       </ng-container>
       <ng-template #showLoginLink>
         <a href="/login">Mis Playlists</a>

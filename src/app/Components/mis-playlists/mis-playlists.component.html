@@ -4,8 +4,8 @@
 <h1>Playlists:</h1>
 
 <div class="main-content">
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-  <div *ngIf="!errorMessage">
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div> <!-- Se agrega este div en caso de que haya error -->
+  <div *ngIf="!errorMessage"> <!-- Se agrega este div en caso de que no haya error -->
     <p>Mis Playlists:</p>
     <ul class="playlist-list">
       <li *ngFor="let playlist of playlists" class="playlist-item">

@@ -5,4 +5,5 @@ export const routes: Routes = [
     {path:'playlists',loadComponent: () => import('./Components/playlists/playlists.component')},
     {path:'login',loadComponent: () => import('./Components/login/login.component')},
     {path: 'misPlaylists', loadComponent: () => import('./Components/mis-playlists/mis-playlists.component')},
+    {path: 'createPlaylist', loadComponent: () => import('./Components/create-playlist/create-playlist.component')}, 
 ];
