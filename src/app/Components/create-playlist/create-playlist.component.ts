@@ -3,6 +3,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { PlaylistService } from '../../services/playlist.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-playlist',
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export default class CreatePlaylistComponent implements OnInit {
   private playlistService = inject(PlaylistService); // Dependency Injection of PlaylistService
+  private router = inject(Router); // Dependency Injection of Router
   playlistName: string = '';
 
   ngOnInit(): void {}
@@ -22,6 +24,7 @@ export default class CreatePlaylistComponent implements OnInit {
       next: () => { // Esta función se ejecuta cuando el Observable emite un nuevo valor, es decir, cuando la creación de la lista de reproducción ha sido exitosa.
         this.playlistName = form.value.playlistName;
         console.log('Playlist created successfully');
+        this.router.navigate(['misPlaylists']); // Redirige a la página de mis playlists
       },
       error: (err) => {
         console.error('Error creating playlist', err); // Muestra más detalles del error en la consola
