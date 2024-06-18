@@ -5,7 +5,10 @@
 <form #playlistForm="ngForm" (ngSubmit)="onSubmit(playlistForm)">
   <div class="form-group">
     <label for="name">Nombre de la Playlist:</label>
-    <input type="text" id="name" class="form-control" name="playlistName" [(ngModel)]="playlistName" required>
+    <input type="text" id="name" class="form-control" name="playlistName" [(ngModel)]="playlistName" required> <!-- required es para que sea obligatorio, ngModel es para enlazar el valor del input con la variable playlistName del componente -->
+    <div *ngIf="playlistForm.controls['playlistName']?.invalid && playlistForm.controls['playlistName']?.touched" class="text-danger"> <!-- Si el campo es inválido (vacio) y ha sido tocado, mostrar el mensaje de error -->
+      El nombre de la playlist es obligatorio.
+    </div>
   </div>
-  <button type="submit" class="btn btn-primary">Crear Playlist</button>
+  <button type="submit" class="btn btn-primary" [disabled]="playlistForm.invalid">Crear Playlist</button> <!-- El botón estará deshabilitado si el formulario es inválido -->
 </form>

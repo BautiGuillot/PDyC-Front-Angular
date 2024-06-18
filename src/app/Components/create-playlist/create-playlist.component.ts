@@ -2,11 +2,12 @@ import { Component, OnInit, inject } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FormsModule, NgForm } from '@angular/forms';
 import { PlaylistService } from '../../services/playlist.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-playlist',
   standalone: true,
-  imports: [SidebarComponent, FormsModule],
+  imports: [SidebarComponent, FormsModule, CommonModule],
   templateUrl: './create-playlist.component.html',
   styleUrls: ['./create-playlist.component.css']
 })
