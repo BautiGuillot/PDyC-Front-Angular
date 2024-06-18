@@ -10,7 +10,7 @@ export class SongsService {
 
   api_url:string = 'http://localhost:8080/songs';
 
-  list() {
+  list() { //carga todas las canciones
     return this.http.get(this.api_url);
   }
   

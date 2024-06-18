@@ -31,11 +31,11 @@ export class LoginService {
     localStorage.removeItem('userEmail');
   };
 
-  isLoggedIn(): boolean {
+  isLoggedIn(): boolean { // Método que devuelve true si el token existe en el localStorage, de lo contrario, devuelve false.
     return !!localStorage.getItem('token'); // El operador !! es una forma de convertir cualquier valor en JavaScript a su equivalente booleano. Si el token existe devolverá true, de lo contrario, devolverá false.
   };
 
-  getUserEmail(): string | null {
+  getUserEmail(): string | null { // Método que devuelve el email del usuario logueado en el localStorage.
     return localStorage.getItem('userEmail');
   };
 

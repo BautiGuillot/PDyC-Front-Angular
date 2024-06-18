@@ -16,8 +16,8 @@ export class SidebarComponent implements OnInit{
 
   userEmail: string | null = null;
 
-  ngOnInit(): void {
-    this.userEmail = this.loginService.getUserEmail();
+  ngOnInit(): void { // Método que se ejecuta al iniciar el componente
+    this.userEmail = this.loginService.getUserEmail();  // Obtenemos el email del usuario logueado
   }
 
   logout() {

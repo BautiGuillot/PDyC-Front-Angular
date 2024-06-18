@@ -3,18 +3,15 @@
     <li>
       <a href="/">Songs</a>
       <a href="/playlists">Playlists</a>
-      <ng-container *ngIf="userEmail; else showLoginLink">
+      <ng-container *ngIf="userEmail; else notLoggedIn"> <!-- ngIf mostrara el contenido de userEmail si existe, de lo contrario mostrara el contenido de notLoggedIn -->
         <a href="/misPlaylists">Mis Playlists</a>
         <a href="/createPlaylist">Crear Playlist</a>
-      </ng-container>
-      <ng-template #showLoginLink>
-        <a href="/login">Mis Playlists</a>
-      </ng-template>
-      <ng-container *ngIf="userEmail; else loginLink">
         <span>{{ userEmail }}</span>
+        <br><br>
         <button (click)="logout()">Logout</button>
       </ng-container>
-      <ng-template #loginLink>
+      <ng-template #notLoggedIn>  <!-- este bloque de codigo se mostrara si userEmail no existe -->
+        <a href="/login">Mis Playlists</a>
         <a href="/login">Login</a>
       </ng-template>
     </li>

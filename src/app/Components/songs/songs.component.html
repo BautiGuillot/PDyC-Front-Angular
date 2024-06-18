@@ -3,22 +3,32 @@
 
 <h1>Canciones:</h1>
 <div class="main-content">
+  <div class="filters">
+    <div class="form-group">
+      <label for="autor">Autor:</label>
+      <input type="text" id="autor" [(ngModel)]="autor" placeholder="Buscar por autor" (input)="filterSongs()">
+    </div>
+    <div class="form-group">
+      <label for="genre">Género:</label>
+      <input type="text" id="genre" [(ngModel)]="genre" placeholder="Buscar por género" (input)="filterSongs()">
+    </div>
+    <button (click)="filterSongs()">Buscar</button>
+  </div>
+
   <table class="table">
-    <thead class>
+    <thead>
       <tr>
         <th>Nombre</th>
         <th>Autor</th>
-        <th>Genero</th>
+        <th>Género</th>
       </tr>
     </thead>
     <tbody>
-      @for(song of songs; track song){
-      <tr>
+      <tr *ngFor="let song of filteredSongs; trackBy: trackByFn">
         <td>{{ song.name }}</td>
         <td>{{ song.autor }}</td>
         <td>{{ song.genre }}</td>
       </tr>
-      }
     </tbody>
   </table>
 </div>
