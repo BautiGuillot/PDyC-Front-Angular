@@ -10,7 +10,7 @@ export class PlaylistService {
   api_url: string = 'http://localhost:8080/playlists';
 
   getPlaylists() {
-    return this.http.get(this.api_url);
+    return this.http.get(this.api_url); 
   }
 
   getMyPlaylists(): Observable<any[]> {
@@ -27,5 +27,14 @@ export class PlaylistService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
     const body = { name: playlistName };
     return this.http.post(this.api_url, body, { headers }); // Petición POST a la API con el token en los headers y el nombre de la playlist
+  }
+
+  deletePlaylist(playlistId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token not found');
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); //se crea un nuevo objeto HttpHeaders y se establece el encabezado 'Authorization' con el valor Bearer ${token}. Este es un esquema común de autenticación que se utiliza en las APIs REST.
+    return this.http.delete(`${this.api_url}/${playlistId}`, { headers }); // Petición DELETE a la API con el token en los headers y el id de la playlist
   }
 }
