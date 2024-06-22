@@ -3,17 +3,20 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { PlaylistService } from '../../services/playlist.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 interface Playlist {
   id: number;
   name: string;
   songCount: number;
+  editing?: boolean; // propiedad opcional para habilitar la edición del nombre de la playlist
+  newName: string; 
 }
 
 @Component({
   selector: 'app-mis-playlists',
   standalone: true,
-  imports: [SidebarComponent, CommonModule],
+  imports: [SidebarComponent, CommonModule, FormsModule],
   templateUrl: './mis-playlists.component.html',
   styleUrls: ['./mis-playlists.component.css'] // corregido el nombre de `styleUrl` a `styleUrls`
 })
@@ -63,4 +66,25 @@ export default class MisPlaylistsComponent implements OnInit {
     this.router.navigate([`/playlist/${playlistId}/songs`]);
   }
 
+  enableEditing(playlist: Playlist): void { // habilitar la edición del nombre de la playlist
+    playlist.editing = true;
+    playlist.newName = playlist.name;
+  }
+
+  editName(playlist: Playlist): void {
+    if (playlist.newName && playlist.newName.trim() !== '') { // verificar que el nuevo nombre no esté vacío
+      this.playlistService.editNamePlaylist(playlist.id, playlist.newName).subscribe({
+        next: () => {
+          if (playlist.newName) {
+            playlist.name = playlist.newName; // La verificación adicional asegura que newName no es undefined
+          }
+          playlist.editing = false;
+        },
+        error: err => {
+          this.errorMessage = 'Ocurrió un error al cambiar el nombre de la playlist.';
+          console.error('Error editing playlist name:', err);
+        }
+      });
+    }
+  }
 }

@@ -42,4 +42,14 @@ export class PlaylistService {
     console.log(`Making request to: ${this.api_url}/${id}/songs`); // Log para verificar la URL de la petición
     return this.http.get(`${this.api_url}/${id}/songs`); 
   }
+
+  editNamePlaylist(id: number, name: string): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token not found');
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
+    const body = { name };
+    return this.http.put(`${this.api_url}/${id}`, body, { headers });
+  }
 }

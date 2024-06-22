@@ -8,9 +8,14 @@
   <div *ngIf="!errorMessage">
     <p>Mis Playlists:</p>
     <ul class="playlist-list">
-      <li *ngFor="let playlist of playlists" class="playlist-item" (click)="viewSongs(playlist.id)"> <!-- cuando se hace click en una playlist se llama a la función viewSongs que redirige a la vista de las canciones de la playlist --> 
-        <span>{{ playlist.name }}</span>
-        <button class="delete-button" (click)="deletePlaylist(playlist.id); $event.stopPropagation()">Eliminar</button> 
+      <li *ngFor="let playlist of playlists" class="playlist-item" (click)="viewSongs(playlist.id)">  <!-- por cada playlist en playlists crea una lista con el nombre de la playlist, si se hace click en la playlist, se llama a la funcion viewSongs con el id de la playlist -->
+        <span *ngIf="!playlist.editing">{{ playlist.name }}</span> <!-- si no se esta editando la playlist, muestra el nombre de la playlist -->
+        <input *ngIf="playlist.editing" [(ngModel)]="playlist.newName" placeholder="Nuevo nombre" (click)="$event.stopPropagation()"/> <!-- si se esta editando la playlist, muestra un input para cambiar el nombre de la playlist -->
+        <div class="button-container">
+          <button *ngIf="!playlist.editing" class="edit-button" (click)="enableEditing(playlist); $event.stopPropagation()">Editar</button> <!-- si no se esta editando la playlist, muestra un boton para editar la playlist -->
+          <button *ngIf="playlist.editing" class="save-button" (click)="editName(playlist); $event.stopPropagation()">Guardar</button> <!-- si se esta editando la playlist, muestra un boton para guardar el nombre de la playlist -->
+          <button class="delete-button" (click)="deletePlaylist(playlist.id); $event.stopPropagation()">Eliminar</button>
+        </div>
       </li>
     </ul>
   </div>
