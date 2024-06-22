@@ -8,9 +8,9 @@
   <div *ngIf="!errorMessage">
     <p>Mis Playlists:</p>
     <ul class="playlist-list">
-      <li *ngFor="let playlist of playlists" class="playlist-item">
+      <li *ngFor="let playlist of playlists" class="playlist-item" (click)="viewSongs(playlist.id)"> <!-- cuando se hace click en una playlist se llama a la función viewSongs que redirige a la vista de las canciones de la playlist --> 
         <span>{{ playlist.name }}</span>
-        <button class="delete-button" (click)="deletePlaylist(playlist.id)">Eliminar</button>
+        <button class="delete-button" (click)="deletePlaylist(playlist.id); $event.stopPropagation()">Eliminar</button> 
       </li>
     </ul>
   </div>

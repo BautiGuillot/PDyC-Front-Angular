@@ -37,4 +37,9 @@ export class PlaylistService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`); //se crea un nuevo objeto HttpHeaders y se establece el encabezado 'Authorization' con el valor Bearer ${token}. Este es un esquema común de autenticación que se utiliza en las APIs REST.
     return this.http.delete(`${this.api_url}/${playlistId}`, { headers }); // Petición DELETE a la API con el token en los headers y el id de la playlist
   }
+
+  getSongsFromPlaylist(id: number): Observable<any> { // getSongFromPlaylist recibe un id de tipo number y devuelve un Observable<any>
+    console.log(`Making request to: ${this.api_url}/${id}/songs`); // Log para verificar la URL de la petición
+    return this.http.get(`${this.api_url}/${id}/songs`); 
+  }
 }

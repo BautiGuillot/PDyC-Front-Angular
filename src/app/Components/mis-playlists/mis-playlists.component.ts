@@ -58,4 +58,9 @@ export default class MisPlaylistsComponent implements OnInit {
       }
     });
   }
+
+  viewSongs(playlistId: number): void { // redirigir a la vista de canciones de la playlist seleccionada
+    this.router.navigate([`/playlist/${playlistId}/songs`]);
+  }
+
 }
