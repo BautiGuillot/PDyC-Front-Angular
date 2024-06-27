@@ -10,6 +10,7 @@
         <th>Canción</th>
         <th>Autor</th>
         <th>Género</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -17,6 +18,9 @@
         <td>{{ song.name }}</td>
         <td>{{ song.autor }}</td>
         <td>{{ song.genre }}</td>
+        <td>
+          <button (click)="deleteSong(song.id)">Eliminar</button>
+        </td>
       </tr>
     </tbody>
   </table>

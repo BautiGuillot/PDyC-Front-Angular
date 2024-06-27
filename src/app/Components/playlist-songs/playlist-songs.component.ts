@@ -5,6 +5,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ActivatedRoute } from '@angular/router';
 
 interface Song {
+  id: number;
   name: string;
   autor: string;
   genre: string;
@@ -40,7 +41,6 @@ export default class PlaylistSongsComponent implements OnInit {
   loadSongs(): void {
     this.playlistService.getSongsFromPlaylist(this.playlistId).subscribe({
       next: (data) => {
-        console.log('Songs data:', data); // Añade un log para verificar los datos de las canciones
         this.songs = data;
         console.log('Songs:', this.songs); // Añade un log para verificar las canciones
       },
@@ -50,6 +50,19 @@ export default class PlaylistSongsComponent implements OnInit {
       },
       complete: () => {
         console.log('Request completed'); // Log para verificar que la solicitud se completó
+      }
+    });
+  }
+
+  deleteSong(songId: number): void {
+    console.log('Deleting song with ID:', songId, 'de la playlist:', this.playlistId); // Log para verificar el ID antes de eliminar
+    this.playlistService.deleteSongFromPlaylist(this.playlistId, songId).subscribe({
+      next: () => {
+        this.loadSongs(); // Recargar las canciones después de borrar una
+      },
+      error: (error) => {
+        this.errorMessage = 'Error deleting song';
+        console.error('Error deleting song:', error); // Log para verificar errores
       }
     });
   }
