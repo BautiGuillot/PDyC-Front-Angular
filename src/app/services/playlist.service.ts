@@ -61,4 +61,14 @@ export class PlaylistService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.api_url}/${playlistId}/songs/${songId}`, { headers }); //la url seria: http://localhost:8080/playlists/${playlistId}/songs/${songId}
   }
+
+  addSongToPlaylist(playlistId: number, songId: number): Observable<any> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      throw new Error('Token not found');
+    }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
+    const body = { id: songId };
+    return this.http.post(`${this.api_url}/${playlistId}/songs`, body, { headers });
+  }
 }

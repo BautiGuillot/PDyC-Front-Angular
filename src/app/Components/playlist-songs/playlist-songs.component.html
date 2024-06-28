@@ -1,4 +1,3 @@
-<!-- Importar sidebar -->
 <app-sidebar></app-sidebar>
 
 <h1>Canciones</h1>
@@ -24,4 +23,12 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Formulario para agregar canción -->
+  <div class="form-add-song">
+    <select #songId>
+      <option *ngFor="let song of availableSongs" [value]="song.id">{{ song.name }}</option> <!-- Asignar valor de la canción -->
+    </select>
+    <button (click)="addSong(+songId.value)">Agregar Canción</button> <!-- Convertir a número -->
+  </div>
 </div>
