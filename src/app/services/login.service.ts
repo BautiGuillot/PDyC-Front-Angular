@@ -13,16 +13,16 @@ export class LoginService {
   private http = inject(HttpClient);  // Dependency Injection of HttpClient
 
   
-  login(credentials:LoginRequest){
-    return this.http.post<any>('http://localhost:8080/login', credentials, {observe: 'response'}).pipe(map(res => {
-      const authorizationHeader = res.headers.get('Authorization');
-      if(authorizationHeader !== null){
+  login(credentials:LoginRequest){ // Método que realiza una petición POST al servidor para loguear al usuario.
+    return this.http.post<any>('http://localhost:8080/login', credentials, {observe: 'response'}).pipe(map(res => { 
+      const authorizationHeader = res.headers.get('Authorization'); // Obtenemos el token del header de la respuesta.
+      if(authorizationHeader !== null){ // Si el token no es nulo, lo guardamos en el localStorage junto con el email del usuario.
         localStorage.setItem('token', authorizationHeader);
         localStorage.setItem('userEmail', credentials.email);
         console.log("Token guardado" + localStorage.getItem('token'));
       };
     
-      return res;
+      return res; 
     }))
   };
 

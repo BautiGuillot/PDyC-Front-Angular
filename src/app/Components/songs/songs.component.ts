@@ -38,11 +38,11 @@ export default class SongsComponent implements OnInit {
     });
   }
 
-  filterSongs(): void {
+  filterSongs(): void { //
     this.applyFilters();
   }
 
-  trackByFn(index: number, item: any): number {
+  trackByFn(index: number, item: any): number { //Función que Angular utiliza para identificar de forma única cada elemento de la lista de canciones
     return item.id;
   }
 

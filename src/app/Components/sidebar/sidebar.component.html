@@ -1,16 +1,19 @@
 <nav>
+  <div class="logo-container">
+    <img src="assets/images/Recurso_2.webp" alt="Logo" class="logo">
+  </div>
   <ul>
     <li>
       <a href="/">Songs</a>
       <a href="/playlists">Playlists</a>
-      <ng-container *ngIf="userEmail; else notLoggedIn"> <!-- ngIf mostrara el contenido de userEmail si existe, de lo contrario mostrara el contenido de notLoggedIn -->
+      <ng-container *ngIf="userEmail; else notLoggedIn">
         <a href="/misPlaylists">Mis Playlists</a>
         <a href="/createPlaylist">Crear Playlist</a>
         <span>{{ userEmail }}</span>
         <br><br>
-        <button (click)="logout()">Logout</button>
+        <button class="logout" (click)="logout()">Logout</button>
       </ng-container>
-      <ng-template #notLoggedIn>  <!-- este bloque de codigo se mostrara si userEmail no existe -->
+      <ng-template #notLoggedIn>
         <a href="/login">Mis Playlists</a>
         <a href="/login">Login</a>
       </ng-template>

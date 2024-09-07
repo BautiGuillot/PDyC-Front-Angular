@@ -1,37 +1,65 @@
-/* sidebar.component.css */
 nav {
-    width: 200px;
-    background-color: #333;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow-y: auto;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav ul li {
-    text-align: center;
-  }
-  
-  nav ul li a {
-    display: block;
-    padding: 15px 10px;
-    text-decoration: none;
-    color: #fff;
-    transition: background-color 0.3s;
-  }
-  
-  nav ul li a:hover {
-    background-color: #575757;
-  }
-  
-  nav ul li a.active {
-    background-color: #444;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #333;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.logo-container {
+  text-align: center;
+  padding: 10px 0; /* Espacio alrededor del logo */
+}
+
+.logo {
+  width: 100px; /* Ajusta el tamaño del logo */
+  height: auto; /* Mantiene la proporción del logo */
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  flex: 1; /* Expande el contenido del menú para llenar el espacio disponible */
+}
+
+nav ul li {
+  text-align: center;
+}
+
+nav ul li a {
+  display: block;
+  padding: 15px 10px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover {
+  background-color: #575757;
+}
+
+nav ul li a.active {
+  background-color: #444;
+}
+
+.logout {
+  border-radius: 20px; /* Cambia a 20px para un borde más redondeado */
+  background-color: #09B1EF; /* Color de fondo */
+  border: 2px solid #09B1EF; /* Color del borde */
+  color: #ffffff; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Centra el texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s, border-color 0.3s; /* Efecto de transición */
+}
+
+.logout:hover {
+  background-color: #007bbf; /* Color de fondo al pasar el ratón */
+  border-color: #007bbf; /* Color del borde al pasar el ratón */
+}

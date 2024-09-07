@@ -1,22 +1,40 @@
-<!-- mis-playlists.component.html -->
 <app-sidebar></app-sidebar>
 
-<h1>Playlists:</h1>
+<h1>Mis Playlists:</h1>
 
 <div class="main-content">
-  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-  <div *ngIf="!errorMessage">
-    <p>Mis Playlists:</p>
-    <ul class="playlist-list">
-      <li *ngFor="let playlist of playlists" class="playlist-item" (click)="viewSongs(playlist.id)">  <!-- por cada playlist en playlists crea una lista con el nombre de la playlist, si se hace click en la playlist, se llama a la funcion viewSongs con el id de la playlist -->
-        <span *ngIf="!playlist.editing">{{ playlist.name }}</span> <!-- si no se esta editando la playlist, muestra el nombre de la playlist -->
-        <input *ngIf="playlist.editing" [(ngModel)]="playlist.newName" placeholder="Nuevo nombre" (click)="$event.stopPropagation()"/> <!-- si se esta editando la playlist, muestra un input para cambiar el nombre de la playlist -->
-        <div class="button-container">
-          <button *ngIf="!playlist.editing" class="edit-button" (click)="enableEditing(playlist); $event.stopPropagation()">Editar</button> <!-- si no se esta editando la playlist, muestra un boton para editar la playlist -->
-          <button *ngIf="playlist.editing" class="save-button" (click)="editName(playlist); $event.stopPropagation()">Guardar</button> <!-- si se esta editando la playlist, muestra un boton para guardar el nombre de la playlist -->
-          <button class="delete-button" (click)="deletePlaylist(playlist.id); $event.stopPropagation()">Eliminar</button>
-        </div>
-      </li>
-    </ul>
-  </div>
+  @if (errorMessage) { <!-- Si hay un mensaje de error, se muestra -->
+    <div class="error">{{ errorMessage }}</div> <!-- el mensaje de error -->
+  } @else { <!-- Si no, se muestra la lista de playlists -->
+    <table class="table">
+      <!-- Fila adicional con el nombre de la tabla y acciones -->
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad de canciones</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (playlist of playlists; track playlist.id) { <!-- Se recorren las playlists -->
+          <tr (click)="viewSongs(playlist.id)"> <!-- Se muestra cada playlist -->
+            @if (!playlist.editing) { <!-- Si no se está editando el nombre de la playlist -->
+              <td>{{ playlist.name }}</td> <!-- Se muestra el nombre de la playlist -->
+            } @else {
+              <td>
+                <input [(ngModel)]="playlist.newName" placeholder="Nuevo nombre" (click)="$event.stopPropagation()"/> <!-- Si se está editando, se muestra un input para cambiar el nombre -->
+              </td>
+            }
+            <td>{{ playlist.songCount }}</td> <!-- Se muestra la cantidad de canciones en la playlist -->
+            <td>
+              <button *ngIf="!playlist.editing" class="edit-button" (click)="enableEditing(playlist); $event.stopPropagation()">Editar</button> <!-- Si no se está editando, se muestra el botón de editar -->
+              <button *ngIf="playlist.editing" class="save-button" (click)="editName(playlist); $event.stopPropagation()">Guardar</button> <!-- Si se está editando, se muestra el botón de guardar -->
+              <button class="delete-button" (click)="deletePlaylist(playlist.id); $event.stopPropagation()">Eliminar</button> <!-- Se muestra el botón de eliminar -->
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  }
 </div>
+
