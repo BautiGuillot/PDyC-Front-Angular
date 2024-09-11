@@ -55,3 +55,13 @@ form {
     border-left: 5px solid #a94442; /* red */
   }
 
+  /* Estilos del logo */
+.logo-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}

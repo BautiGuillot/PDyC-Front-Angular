@@ -18,17 +18,32 @@
         <td>{{ song.autor }}</td>
         <td>{{ song.genre }}</td>
         <td>
-          <button (click)="deleteSong(song.id)">Eliminar</button>
+          <button class="button" (click)="deleteSong(song.id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
 
-  <!-- Formulario para agregar canción -->
-  <div class="form-add-song">
-    <select #songId>
-      <option *ngFor="let song of availableSongs" [value]="song.id">{{ song.name }}</option> <!-- Asignar valor de la canción -->
-    </select>
-    <button (click)="addSong(+songId.value)">Agregar Canción</button> <!-- Convertir a número -->
-  </div>
+  <!-- Tabla para añadir canciones disponibles -->
+  <h2>Añadir canciones disponibles</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Canción</th>
+        <th>Autor</th>
+        <th>Género</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let availableSong of availableSongs">
+        <td>{{ availableSong.name }}</td>
+        <td>{{ availableSong.autor }}</td>
+        <td>{{ availableSong.genre }}</td>
+        <td>
+          <button class="button-add" (click)="addSong(availableSong.id)">Añadir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>

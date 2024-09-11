@@ -6,7 +6,7 @@
   color: #e0e0e0;
 }
 
-h1 {
+h1, h2 {
   color: #e0e0e0;
   text-align: center;
   margin-bottom: 20px;
@@ -20,8 +20,7 @@ h1 {
   background-color: #1e1e1e;
 }
 
-.table th,
-.table td {
+.table th, .table td {
   padding: 12px 15px;
   text-align: left;
   border-bottom: 1px solid #333;
@@ -48,45 +47,25 @@ h1 {
   background-color: #444;
 }
 
-/* Estilos de botones */
+/* Estilos de boton add */
+.button-add {
+  padding: 8px 12px;
+  background-color: #09B1EF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .button {
   padding: 8px 12px;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.button:hover {
   background-color: #ff3333;
-}
-
-/* Estilos para el formulario de agregar canción */
-.form-add-song {
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.form-add-song input {
-  padding: 8px;
-  margin-right: 10px;
-  border: 1px solid #333;
-  border-radius: 4px;
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-}
-
-.form-add-song button {
-  padding: 8px 12px;
-  background-color: #4CAF50; /* Color verde para el botón de agregar */
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.form-add-song button:hover {
-  background-color: #45a049;
+.button:hover, .button-add:hover {
+  background-color: #ff3333;
 }
